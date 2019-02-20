@@ -1,3 +1,5 @@
+fix to set AVAudioSession to AVAudioSessionCategoryPlayAndRecord after recording so audio wont break html video/audio elements
+
 ---
 title: Media
 description: Record and play audio on the device.
