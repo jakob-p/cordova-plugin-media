@@ -1,4 +1,4 @@
-fix to set AVAudioSession to AVAudioSessionCategoryPlayAndRecord after recording so audio wont break html video/audio elements
+this branch adds a fix to set AVAudioSession to AVAudioSessionCategoryPlayAndRecord after recording so audio wont break html video/audio elements
 
 ---
 title: Media
