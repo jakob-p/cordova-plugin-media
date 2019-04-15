@@ -43,6 +43,9 @@ BOOL keepAvAudioSessionAlwaysActive = NO;
             }
         }
     }
+    if ([self hasAudioSession]) {
+      [self.avSession setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:AVAudioSessionCategoryOptionMixWithOthers | AVAudioSessionCategoryOptionDefaultToSpeaker error:nil];
+    }
 }
 
 // Maps a url for a resource path for recording
