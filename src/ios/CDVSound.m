@@ -33,6 +33,7 @@ BOOL keepAvAudioSessionAlwaysActive = NO;
 
 -(void) pluginInitialize
 {
+    NSLog(@"Media plugin init.");
     NSDictionary* settings = self.commandDelegate.settings;
     keepAvAudioSessionAlwaysActive = [[settings objectForKey:[@"KeepAVAudioSessionAlwaysActive" lowercaseString]] boolValue];
     if (keepAvAudioSessionAlwaysActive) {
