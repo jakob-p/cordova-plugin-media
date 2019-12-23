@@ -45,7 +45,7 @@ BOOL keepAvAudioSessionAlwaysActive = NO;
         }
     }
     if ([self hasAudioSession]) {
-      [self.avSession setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:AVAudioSessionCategoryOptionMixWithOthers | AVAudioSessionCategoryOptionDefaultToSpeaker error:nil];
+      [self.avSession setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:AVAudioSessionCategoryOptionMixWithOthers error:nil];
     }
 }
 
@@ -681,7 +681,7 @@ BOOL keepAvAudioSessionAlwaysActive = NO;
             // get the audioSession and set the category to allow recording when device is locked or ring/silent switch engaged
             if ([weakSelf hasAudioSession]) {
                 if (![weakSelf.avSession.category isEqualToString:AVAudioSessionCategoryPlayAndRecord]) {
-                    [weakSelf.avSession setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:AVAudioSessionCategoryOptionMixWithOthers | AVAudioSessionCategoryOptionDefaultToSpeaker error:nil];
+                    [weakSelf.avSession setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:AVAudioSessionCategoryOptionMixWithOthers error:nil];
                 }
 
                 if (![weakSelf.avSession setActive:YES error:&error]) {
