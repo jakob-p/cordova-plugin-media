@@ -19,7 +19,6 @@
 package org.apache.cordova.media;
 
 import android.media.AudioManager;
-import android.media.AudioFormat;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.media.MediaPlayer.OnErrorListener;
