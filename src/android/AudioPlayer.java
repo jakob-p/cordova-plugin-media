@@ -154,11 +154,18 @@ public class AudioPlayer implements OnCompletionListener, OnPreparedListener, On
             this.audioFile = file;
             this.recorder = new MediaRecorder();
             this.recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-            this.recorder.setOutputFormat(MediaRecorder.OutputFormat.AAC_ADTS); // RAW_AMR);
-            this.recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC); //AMR_NB);
-            this.recorder.setAudioSamplingRate(16000); //Sampling rate 16K
-            this.recorder.setAudioChannels(1);//bit rate 16bit
-            this.recorder.setAudioEncodingBitRate(AudioFormat.ENCODING_PCM_16BIT); //audio encoding bit rate
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                // record as 44.1khz AAC for android 5.0 and above
+                this.recorder.setOutputFormat(MediaRecorder.OutputFormat.AAC_ADTS);
+                this.recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
+                this.recorder.setAudioChannels(1);
+                this.recorder.setAudioEncodingBitRate(44100 * 12);
+                this.recorder.setAudioSamplingRate(44100);
+            } else {
+                // Android 4.4 records as AMR_WB as AAC cuts the end of the recordings
+                this.recorder.setOutputFormat(MediaRecorder.OutputFormat.AMR_WB);
+                this.recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_WB);
+            }
             this.tempFile = generateTempFile();
             this.recorder.setOutputFile(this.tempFile);
             try {
